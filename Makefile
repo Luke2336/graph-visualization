@@ -1,5 +1,5 @@
 CXX := g++
-TARGET := visulization
+TARGET := visualization
 CXXFLAGS := -std=c++11 -O3
 WARNINGFLAGS := -Wall -Wextra
 INCLUDE := src

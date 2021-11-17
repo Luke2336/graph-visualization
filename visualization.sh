@@ -2,9 +2,9 @@
 
 if [ "$1" == "-h" ]; then
   echo ""
-  echo "./visulization.sh [InputFile] [OutputFile] [OutputFile2.png]"
+  echo "./visualization.sh [InputFile] [OutputFile] [OutputFile2.png]"
   echo "-----------------------------------"
-  echo "Example: ./visulization.sh input.txt output.txt output.png"
+  echo "Example: ./visualization.sh input.txt output.txt output.png"
   echo "-----------------------------------"
   echo " - InputFile: a file with simple graph, including NumNode, NumEdge, Edges"
   echo " - OutputFile: a file with cooridnates"
@@ -19,8 +19,8 @@ if [ "$#" -ne 3 ]; then
 fi
 
 make
-echo "./visulation"
-./visulization <$1 >$2
+echo "./visualization"
+./visualization <$1 >$2
 make clean
 echo "python3 draw.py"
 python3 draw.py $1 $2 $3
