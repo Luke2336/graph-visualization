@@ -10,7 +10,8 @@ void FruchtermanReingold::genInitPos(std::vector<Point> &Positions) const {
   // to form an unit cycle
   const int N = getNumNode();
   const double Theta = 2 * acos(-1.0) / N;
-  for (int i = 0, t = 0; i < N; ++i, t += Theta) {
+  double t = 0;
+  for (int i = 0; i < N; ++i, t += Theta) {
     Positions[i].x = cos(t);
     Positions[i].y = sin(t);
   }
@@ -80,6 +81,10 @@ std::vector<Point> FruchtermanReingold::genPosition() {
       auto &Displacement = Displacements[v];
       double Norm = Displacement.getNorm();
       Positions[v] += Displacement * (std::min(Norm, T) / Norm);
+      Positions[v].x =
+          std::min(getWidth() / 2, std::max(-getWidth() / 2, Positions[v].x));
+      Positions[v].y =
+          std::min(getHeight() / 2, std::max(-getHeight() / 2, Positions[v].y));
     }
     // Reduce temperature T
     T = std::max(MinTemp, T * Delta);
