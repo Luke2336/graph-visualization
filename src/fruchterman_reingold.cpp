@@ -17,7 +17,7 @@ void FruchtermanReingold::genInitPos(std::vector<Point> &Positions) const {
   }
 }
 
-void FruchtermanReingold::ScalePos(std::vector<Point> &Positions) const {
+void FruchtermanReingold::scalePos(std::vector<Point> &Positions) const {
   const double W = getWidth();
   const double H = getHeight();
   double MinX = W;
@@ -47,7 +47,7 @@ void FruchtermanReingold::ScalePos(std::vector<Point> &Positions) const {
 
 std::vector<Point> FruchtermanReingold::genPosition() {
   const int N = getNumNode();
-  const double K = 1.5;
+  const double K = std::max(1.5, sqrt(N));
   double T = InitTemp;
   std::vector<Point> Positions(N);
   genInitPos(Positions);
@@ -89,6 +89,6 @@ std::vector<Point> FruchtermanReingold::genPosition() {
     // Reduce temperature T
     T = std::max(MinTemp, T * Delta);
   }
-  ScalePos(Positions);
+  scalePos(Positions);
   return Positions;
 }

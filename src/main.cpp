@@ -14,7 +14,7 @@ int main() {
     Graph[a].emplace_back(b);
     Graph[b].emplace_back(a);
   }
-  FruchtermanReingold FR(Graph);
+  FruchtermanReingold FR(Graph, NumNode * 1e4, NumNode * 1e4);
   auto Positions = FR.genPosition();
   for (auto P : Positions) {
     std::cout << (int)P.x << ' ' << (int)P.y << '\n';

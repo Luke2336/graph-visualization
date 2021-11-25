@@ -50,7 +50,9 @@ am bm
 | 6 | Bamboo | ![](./image/6.png) |
 | 7 | $K_5$ | ![](./image/9.png) |
 | 8 | 100 isolated nodes | ![](./image/10.png) |
-| 9 | Grid | ![](./image/12.png) |
-| 10 | Caterpillar tree | ![](./image/13.png) |
-| 11 | $C_{200}$ | ![](./image/15.png) |
+| 9 | Grid | ![](./image/11.png) |
+| 10 | Grid | ![](./image/12.png) |
+| 11 | Caterpillar tree | ![](./image/13.png) |
+| 12 | 5-regular | ![](./image/14.png) |
+| 13 | $C_{200}$ | ![](./image/15.png) |
 
