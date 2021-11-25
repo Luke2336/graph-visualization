@@ -29,6 +29,8 @@ collection = collections.LineCollection(segments, color=['red']*n)
 fig, axes = plt.subplots(1, 1)
 axes.add_collection(collection)
 axes.scatter(x, y, s = 20)
+for i in range(len(x)):
+  axes.annotate(str(i), (x[i], y[i]))
 axes.autoscale()
 
 plt.savefig(sys.argv[3])
