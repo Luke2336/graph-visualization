@@ -12,18 +12,29 @@ The algorithm is based on a force-directed method and simulated annealing, calle
 
 ## Run
 
-1.   Please install `matplotlib` first.
-2.   Run the bash script.
+Please install `matplotlib` first.
+
+### Method 1.
+Run the bash script.
 
 ```shell
-./visualization.sh [InputFile] [OutputCoordinationFile] [OutputImageFile]
+./visualization.sh [InputFile]
 ```
 
 For example
 
 ```shell
-./visualization.sh benchmark/input1.txt output1.txt output1.png
+./visualization.sh benchmark/input1.txt
 ```
+
+### Method 2.
+
+```
+make
+python3 draw.py <benchmark/input1.txt
+make clean
+```
+
 
 #### Input Format
 

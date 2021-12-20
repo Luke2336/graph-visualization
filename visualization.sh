@@ -2,25 +2,19 @@
 
 if [ "$1" == "-h" ]; then
   echo ""
-  echo "./visualization.sh [InputFile] [OutputFile] [OutputFile2.png]"
+  echo "./visualization.sh [InputFile]"
   echo "-----------------------------------"
-  echo "Example: ./visualization.sh input.txt output.txt output.png"
+  echo "Example: ./visualization.sh input.txt"
   echo "-----------------------------------"
   echo " - InputFile: a file with simple graph, including NumNode, NumEdge, Edges"
-  echo " - OutputFile: a file with cooridnates"
-  echo " - OutputFile: a png file with graph visulization"
-  echo "-----------------------------------"
   exit 0
 fi
 
-if [ "$#" -ne 3 ]; then
-    echo "You must input 3 arguments"
-    exit 0
+if [ "$#" -ne 1 ]; then
+  echo "You must input InputFile"
+  exit 0
 fi
 
 make
-echo "./visualization"
-./visualization <$1 >$2
+python3 draw.py <$1
 make clean
-echo "python3 draw.py"
-python3 draw.py $1 $2 $3

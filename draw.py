@@ -1,27 +1,27 @@
 from matplotlib import collections
 import matplotlib.pyplot as plt
 import sys
+import fruchterman_reingold
 
-coordinate_file = open(sys.argv[2], 'r')
-lines = coordinate_file.readlines()
-coordinate_file.close()
-n = len(lines)
+# input
+n, m = map(int, input().split())
+graph = []
+for i in range(m):
+  graph.append([int(i) for i in input().split()])
+  assert(len(graph[i]) == 2)
+
+coordinate = fruchterman_reingold.Visualization(n, m, graph)
+
 x = []
 y = []
-for line in lines:
-  a, b = line.split()
-  x.append(int(a))
-  y.append(int(b))
+for i in range(n):
+  x.append(coordinate[i][0])
+  y.append(coordinate[i][1])
 
-graph_file = open(sys.argv[1], 'r')
-graph_file.readline()
-lines = graph_file.readlines()
-graph_file.close()
 segments = []
-for line in lines:
-  a, b = line.split()
-  u = int(a)
-  v = int(b)
+for edge in graph:
+  u = edge[0]
+  v = edge[1]
   segments.append([(x[u], y[u]), (x[v], y[v])])
   
 collection = collections.LineCollection(segments, color=['red']*n)
@@ -33,5 +33,4 @@ for i in range(len(x)):
   axes.annotate(str(i), (x[i], y[i]))
 axes.autoscale()
 
-plt.savefig(sys.argv[3])
 plt.show()
