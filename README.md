@@ -29,14 +29,14 @@ For example
 
 ### Method 2.
 
-```
+```shell
 make
-python3 draw.py <benchmark/input1.txt
+python3 draw.py <[InputFile]
 make clean
 ```
 
 
-#### Input Format
+### Input Format
 
 The first line should contain two integer $n$ and $m$, where $n$ should less than 1000.
 
@@ -49,6 +49,17 @@ a2 b2
 ...
 am bm
 ```
+
+## Python API
+
+```python
+fruchterman_reingold.Visualization(numNode, numEdge, Edges)
+```
+
+- `numNode`: number of nodes
+- `numEdge`: number of edges
+- `Edges`: a list of edges, each edge is a list of two indices of node
+
 
 ## Result
 | id | type | image |
