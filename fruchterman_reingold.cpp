@@ -1,9 +1,13 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "fruchterman_reingold.hpp"
 #include "geometry.hpp"
+
+namespace py = pybind11;
 
 void FruchtermanReingold::genInitPos(std::vector<Point> &Positions) const {
   // Initialize the positions of all nodes
@@ -91,4 +95,28 @@ std::vector<Point> FruchtermanReingold::genPosition() {
   }
   scalePos(Positions);
   return Positions;
+}
+
+std::vector<std::vector<int>>
+Visualization(int N, int M, std::vector<std::vector<int>> Edges) {
+  std::vector<std::vector<int>> Graph(N);
+  for (int i = 0; i < M; ++i) {
+    Graph[Edges[i][0]].emplace_back(Edges[i][1]);
+    Graph[Edges[i][1]].emplace_back(Edges[i][0]);
+  }
+  FruchtermanReingold FR(Graph, N * 1e4, N * 1e4);
+  auto Positions = FR.genPosition();
+  std::vector<std::vector<int>> Ret;
+  for (auto P : Positions) {
+    std::vector<int> Tmp;
+    Tmp.emplace_back(P.x);
+    Tmp.emplace_back(P.y);
+    Ret.emplace_back(Tmp);
+  }
+  return Ret;
+}
+
+PYBIND11_MODULE(fruchterman_reingold, m) {
+  m.doc() = "Graph Visualization";
+  m.def("Visualization", &Visualization);
 }
