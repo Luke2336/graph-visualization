@@ -10,6 +10,10 @@ The algorithm is based on a force-directed method and simulated annealing, calle
 
 -   https://dcc.fceia.unr.edu.ar/sites/default/files/uploads/materias/fruchterman.pdf
 
+## Environment
+
+macOS
+
 ## Run
 
 Please install `matplotlib` first.
